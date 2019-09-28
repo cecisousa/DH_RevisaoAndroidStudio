@@ -57,7 +57,7 @@ public class FotoBandaFragment extends Fragment {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(FotoBandaFragment.this, BandaFragment.class));
             }
         });
 
