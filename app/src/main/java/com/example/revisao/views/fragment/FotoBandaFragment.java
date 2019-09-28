@@ -1,7 +1,6 @@
 package com.example.revisao.views.fragment;
 
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -61,23 +60,25 @@ public class FotoBandaFragment extends Fragment {
             public void onClick(View view) {
                 replaceFragment(new BandaFragment());
             }
+
         });
 
         return view;
 
     }
 
+    public void replaceFragment(Fragment fragment){
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+//        ou FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+
     public void initViews(View view){
         txtNomeBanda = view.findViewById(R.id.textViewNomeBanda);
         btnVoltar = view.findViewById(R.id.btnVoltar);
         imagem = view.findViewById(R.id.imageView);
-    }
-
-    public void replaceFragment(Fragment fragment){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.commit();
     }
 
 
