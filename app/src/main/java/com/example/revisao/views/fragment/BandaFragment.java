@@ -58,7 +58,7 @@ public class BandaFragment extends Fragment {
         btnVerFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Banda banda = new Banda(R.drawable.aerosmith, "Aerosmith");
+                Banda banda = new Banda(R.drawable.aerosmith, "Aerosmith <3");
                 comunicador.recebeMensagem(banda);
             }
         });

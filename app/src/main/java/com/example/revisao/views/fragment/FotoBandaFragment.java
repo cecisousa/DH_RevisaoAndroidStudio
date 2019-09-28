@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.revisao.R;
 import com.example.revisao.views.model.Banda;
@@ -57,7 +59,7 @@ public class FotoBandaFragment extends Fragment {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FotoBandaFragment.this, BandaFragment.class));
+                replaceFragment(new BandaFragment());
             }
         });
 
@@ -65,12 +67,17 @@ public class FotoBandaFragment extends Fragment {
 
     }
 
-
-
     public void initViews(View view){
         txtNomeBanda = view.findViewById(R.id.textViewNomeBanda);
         btnVoltar = view.findViewById(R.id.btnVoltar);
         imagem = view.findViewById(R.id.imageView);
+    }
+
+    public void replaceFragment(Fragment fragment){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
     }
 
 

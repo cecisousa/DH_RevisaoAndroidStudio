@@ -91,7 +91,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -136,10 +136,10 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
         Bundle bundle = new Bundle();
         bundle.putParcelable(CHAVE, so);
 
-        Fragment fragment = new BandaFragment();
-        fragment.setArguments(bundle);
+        Fragment segundoFragment = new FotoBandaFragment();
+        segundoFragment.setArguments(bundle);
 
-        replaceFragment(fragment);
+        replaceFragment(segundoFragment);
 
     }
 
