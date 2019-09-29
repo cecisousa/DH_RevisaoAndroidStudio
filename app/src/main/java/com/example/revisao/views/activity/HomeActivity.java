@@ -100,18 +100,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
         recyclerView = findViewById(R.id.listaMusicasRecyclerView);
 
-        adapter = new MusicasAdapter(listaMusicas);
-
-        listaMusicas.add(new Musicas("Pink"));
-        listaMusicas.add(new Musicas("Crazy"));
-        listaMusicas.add(new Musicas("Cryn"));
-        listaMusicas.add(new Musicas("I Don't Wanna Miss a Thing"));
-        listaMusicas.add(new Musicas("Fly Away From Here"));
-        listaMusicas.add(new Musicas("Livin' on the Edge"));
-        listaMusicas.add(new Musicas("Girls of Summer"));
-        listaMusicas.add(new Musicas("The Other Side"));
-        listaMusicas.add(new Musicas("Dude"));
-        listaMusicas.add(new Musicas("Amazing"));
+        adapter = new MusicasAdapter(recebeListaMusicas());
 
         recyclerView.setAdapter(adapter);
 
@@ -143,15 +132,15 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
         int id = item.getItemId();
 
-            if (id == R.id.action_sair) {
+        if (id == R.id.action_sair) {
 
-        Toast.makeText(this, "Saindo", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(HomeActivity.this, StartActivity.class));
-        return true;
-    }
+            Toast.makeText(this, "Saindo", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(HomeActivity.this, StartActivity.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
-}
+    }
 
     @Override
     public void recebeMensagem(Banda banda) {
@@ -176,6 +165,21 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
         replaceFragment(segundoFragment);
 
+    }
+
+    public List<Musicas> recebeListaMusicas(){
+        listaMusicas.add(new Musicas("Pink"));
+        listaMusicas.add(new Musicas("Crazy"));
+        listaMusicas.add(new Musicas("Cryn"));
+        listaMusicas.add(new Musicas("I Don't Wanna Miss a Thing"));
+        listaMusicas.add(new Musicas("Fly Away From Here"));
+        listaMusicas.add(new Musicas("Livin' on the Edge"));
+        listaMusicas.add(new Musicas("Girls of Summer"));
+        listaMusicas.add(new Musicas("The Other Side"));
+        listaMusicas.add(new Musicas("Dude"));
+        listaMusicas.add(new Musicas("Amazing"));
+
+        return listaMusicas;
     }
 
 }
