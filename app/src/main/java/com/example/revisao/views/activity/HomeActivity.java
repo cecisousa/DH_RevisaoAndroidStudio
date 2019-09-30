@@ -2,50 +2,34 @@ package com.example.revisao.views.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.revisao.R;
-import com.example.revisao.views.adapter.MusicasAdapter;
-import com.example.revisao.views.fragment.BandaFragment;
-import com.example.revisao.views.fragment.ComidaFragment;
-import com.example.revisao.views.fragment.FotoBandaFragment;
-
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.example.revisao.R;
+import com.example.revisao.views.fragment.BandaFragment;
+import com.example.revisao.views.fragment.ComidaFragment;
+import com.example.revisao.views.fragment.FotoBandaFragment;
 import com.example.revisao.views.fragment.ListaMusicasFragment;
 import com.example.revisao.views.interfaces.Comunicador;
 import com.example.revisao.views.model.Banda;
-import com.example.revisao.views.model.Musicas;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Menu;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 //Implemetar a interface Comunicador e sobrescrever seu respectivo método
 public class HomeActivity extends AppCompatActivity implements Comunicador {
     private DrawerLayout drawer;
     private AppBarConfiguration mAppBarConfiguration;
-
-    private RecyclerView recyclerView;
-    private MusicasAdapter adapter;
-    private List<Musicas> listaMusicas = new ArrayList<>();
 
     public static final String BANDA_KEY = "banda";
 
@@ -97,14 +81,6 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
                 return true;
             }
         });
-
-        recyclerView = findViewById(R.id.listaMusicasRecyclerView);
-
-        adapter = new MusicasAdapter(recebeListaMusicas());
-
-        recyclerView.setAdapter(adapter);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -165,21 +141,6 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
         replaceFragment(segundoFragment);
 
-    }
-
-    public List<Musicas> recebeListaMusicas(){
-        listaMusicas.add(new Musicas("Pink"));
-        listaMusicas.add(new Musicas("Crazy"));
-        listaMusicas.add(new Musicas("Cryn"));
-        listaMusicas.add(new Musicas("I Don't Wanna Miss a Thing"));
-        listaMusicas.add(new Musicas("Fly Away From Here"));
-        listaMusicas.add(new Musicas("Livin' on the Edge"));
-        listaMusicas.add(new Musicas("Girls of Summer"));
-        listaMusicas.add(new Musicas("The Other Side"));
-        listaMusicas.add(new Musicas("Dude"));
-        listaMusicas.add(new Musicas("Amazing"));
-
-        return listaMusicas;
     }
 
 }
